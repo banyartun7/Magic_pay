@@ -17,13 +17,13 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item"> <a href="{{ route('admin.home') }}" class="nav-link active"> <i
+                        <li class="nav-item"> <a href="{{ route('admin.home') }}" class="nav-link @yield('dashboard')"> <i
                                     class="nav-icon bi bi-circle"></i>
-                                <p>Dashboard v1</p>
+                                <p>Dashboard</p>
                             </a> </li>
-                        <li class="nav-item"> <a href="./index2.html" class="nav-link"> <i
-                                    class="nav-icon bi bi-circle"></i>
-                                <p>Dashboard v2</p>
+                        <li class="nav-item"> <a href="{{ route('admin.admin_user.index') }}"
+                                class="nav-link @yield('admin_user_active')"> <i class="nav-icon bi bi-circle"></i>
+                                <p>Admin Users</p>
                             </a> </li>
                         <li class="nav-item"> <a href="./index3.html" class="nav-link"> <i
                                     class="nav-icon bi bi-circle"></i>

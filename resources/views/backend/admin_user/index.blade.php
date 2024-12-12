@@ -16,14 +16,9 @@
     </div> <!--end::App Content Header-->
 @endsection
 @section('content')
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
-
     <div class="pb-3">
-        <a href="{{ route('admin.admin_user.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i>Create
+        <a href="{{ route('admin.admin_user.create') }}" class="btn btn-primary"><i class="fas fa-plus-circle"
+                style="margin-right:5px"></i>Create
             Admin
             User</a>
     </div>
@@ -35,6 +30,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,6 +39,13 @@
                             <td>{{ $adminUser->name }}</td>
                             <td>{{ $adminUser->email }}</td>
                             <td>{{ $adminUser->phone }}</td>
+                            <td>
+                                <div class="icon-action"><a class="text-warning"
+                                        href="{{ route('admin.admin_user.edit', $adminUser->id) }}"><i
+                                            class="fa-solid fa-pen-to-square"></i></a> <a class="text-danger"
+                                        href=""><i class="far fa-trash-alt"></i></a>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

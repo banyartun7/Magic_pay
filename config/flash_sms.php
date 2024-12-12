@@ -2,6 +2,7 @@
 return[
     'admin_user'=>
     [
-        'create'=>'A new admin created successfully!',
+        'create' => 'A new admin created successfully!',
+        'update' => 'Updated successfully',
     ]
     ];

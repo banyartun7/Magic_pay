@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\adminUserStoreRequest;
+use App\Http\Requests\adminUserUpdateRequest;
 
 class AdminUserController extends Controller
 {
@@ -33,7 +34,7 @@ class AdminUserController extends Controller
     public function store(adminUserStoreRequest $request)
     {
         AdminUser::create($request->validated());
-        return redirect('/admin/admin_user')->with('status',config("flash_sms.admin_user.create"));
+        return redirect('/admin/admin_user')->with('create',config("flash_sms.admin_user.create"));
     }
 
     /**
@@ -47,17 +48,20 @@ class AdminUserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(AdminUser $adminUser)
     {
-        //
+        return view('backend.admin_user.edit', compact('adminUser'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(adminUserUpdateRequest $request, AdminUser $adminUser)
     {
-        //
+        //return $request->all();
+        $adminUser->update(
+            $request->validated() + ['password' => empty($request->password) ? $adminUser->password : Hash::make($request->password)]);
+            return redirect('/admin/admin_user')->with('update', config("flash_sms.admin_user.update"));
     }
 
     /**
